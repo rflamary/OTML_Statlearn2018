@@ -3,7 +3,7 @@
 Courses and practical sessions for the Optimal Transport and Machine learning course at [Statlearn 2018](http://statlearn.sfds.asso.fr/).
 
 
-This course has been prepared by [Rémi Flamary] and(http://remi.flamary.com/) [Nicolas Courty](http://people.irisa.fr/Nicolas.Courty/).
+This course has been prepared by [Rémi Flamary](http://remi.flamary.com/)  and [Nicolas Courty](http://people.irisa.fr/Nicolas.Courty/).
 
 ### Course
 
