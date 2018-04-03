@@ -38,7 +38,7 @@ You can download all the necessary files here: [OTML_Statlearn2018.zip](https://
 
 The zip file contains the following session:
 
-0. Introduction to OT with POT
+0. [Introduction to OT with POT](0_Intro_OT.ipynb)
 1. Domain adaptation on digits with OT
 2. Color Grading with OT
 
