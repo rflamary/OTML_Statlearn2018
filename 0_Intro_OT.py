@@ -30,7 +30,7 @@ import pylab as pl # do the plots
 import ot # ot 
 
 
-# #### Getting help
+#%% #### Getting help
 # 
 # Online  documentation : [http://pot.readthedocs.io](http://pot.readthedocs.io) 
 # 
@@ -43,7 +43,7 @@ import ot # ot
 help(ot.dist)
 
 
-# ## First OT Problem
+#%% ## First OT Problem
 # 
 # We will solve the Bakery/Cafés problem of transporting croissants from a number of Bakeries to Cafés in a City (In this case Manhattan). We did a quick google map search in Manhattan for bakeries and Cafés:
 # 
@@ -74,7 +74,7 @@ print('Cafe sale: {}'.format(cafe_prod))
 print('Total croissants : {}'.format(cafe_prod.sum()))
 
 
-# #### Plotting bakeries in the city
+#%% #### Plotting bakeries in the city
 # 
 # Next we plot the position of the bakeries and cafés on the map. The size of the circle is proportional to their production.
 # 
@@ -92,14 +92,14 @@ pl.legend()
 pl.title('Manhattan Bakeries and Cafés');
 
 
-# #### Cost matrix
+#%% #### Cost matrix
 # 
 # 
 # We compute the cost matrix between the bakeries and the cafés, this will be the transport cost matrix. This can be done using the [ot.dist](http://pot.readthedocs.io/en/stable/all.html#ot.dist) that defaults to squared euclidean distance but can return other things such as cityblock (or manhattan distance). 
 # 
 # 
 
-# #### Solving the OT problem with [ot.emd](http://pot.readthedocs.io/en/stable/all.html#ot.emd)
+#%% #### Solving the OT problem with [ot.emd](http://pot.readthedocs.io/en/stable/all.html#ot.emd)
 
 # #### Transportation plan vizualization
 # 
@@ -107,7 +107,7 @@ pl.title('Manhattan Bakeries and Cafés');
 # 
 # In order to make it more interpretable one can also use the ```alpha``` parameter of plot and set it to ```alpha=G[i,j]/G[i,j].max()```. 
 
-# #### OT loss and dual variables
+#%% #### OT loss and dual variables
 # 
 # The resulting wasserstein loss loss is of the form:
 # 
@@ -116,7 +116,7 @@ pl.title('Manhattan Bakeries and Cafés');
 # where $\gamma$ is the optimal transport matrix.
 # 
 
-# #### Regularized OT with SInkhorn
+#%% #### Regularized OT with SInkhorn
 # 
 # The Sinkhorn algorithm is very simple to code. You can implement it directly using the following pseudo-code:
 # 

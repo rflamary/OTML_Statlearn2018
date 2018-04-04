@@ -14,7 +14,7 @@
 # To this end we will try and adapt between the MNIST and USPS datasets. Since those datasets do not have the same resolution (28x28 and 16x16 for MNSIT and USPS) we perform a zeros padding of the USPS digits 
 # 
 # 
-# ####  Import modules
+#%% ####  Import modules
 # 
 # First we import the relevant modules. Note that you will need ```sklearn``` to learn the Support Vector Machine cleassifier and to projet the data with TSNE.
 # 
@@ -30,7 +30,7 @@ from sklearn.manifold import TSNE
 import ot
 
 
-# ### Loading data and normalization
+#%% ### Loading data and normalization
 # 
 # We load the data in memory and perform a normalization of the images so that they all sum to 1.
 # 
@@ -53,7 +53,7 @@ ns=xs.shape[0]
 nt=xt.shape[0]
 
 
-# ### Vizualizing Source (MNIST) and Target (USPS) datasets
+#%% ### Vizualizing Source (MNIST) and Target (USPS) datasets
 # 
 # 
 # 
@@ -96,7 +96,7 @@ pl.gcf().subplots_adjust(top=0.95)
 # Also since we have performe zero padding on the USPS digits theyr are in average slightly smaller than NMSIT that can take the whole image.
 # 
 # 
-# ### Classification without domain adaptation
+#%% ### Classification without domain adaptation
 # 
 # We learn a classifier on the MNIST dataset (we will not be state of the art on 1000 samples). We evaluate this claddifier on MNIST and on the USPS dataset.
 
@@ -116,7 +116,7 @@ print('ACC_MNIST={:1.3f}'.format(ACC_MNIST))
 print('ACC_USPS={:1.3f}'.format(ACC_USPS))
 
 
-# There is a very large loss in performances. This can be better explained by performning a TSNE embedding on the data.
+#%% There is a very large loss in performances. This can be better explained by performning a TSNE embedding on the data.
 # 
 # ### TSNE of the Source/Target domains
 # 
@@ -152,7 +152,7 @@ pl.title('TSNE Embedding of the Source/Target data');
 
 # We can see that while the classes are relatively well clustured, the clusters from source and target dataset rarely overlapp. This is the main reason for the important loss in performance between Source and target.
 # 
-# ### Optimal Transport Domain Adaptation (OTDA)
+#%% ### Optimal Transport Domain Adaptation (OTDA)
 # 
 # Now we perform domain adaptation with the following 3 steps illustrated at the top of the notebook:
 # 
@@ -170,17 +170,17 @@ pl.title('TSNE Embedding of the Source/Target data');
 # We can clearly see the (noisy) structure in the matrix. It is also interesting to note that the class 1 in usps (second column) is particularly different fromm all the other classes in MNIST data (even class 1).
 # 
 # 
-# Next we compute the OT matrix using exact LP OT [ot.emd](http://pot.readthedocs.io/en/stable/all.html#ot.emd) or regularized OT with  [ot.sinkhorn](http://pot.readthedocs.io/en/stable/all.html#ot.sinkhorn).
+#%% Next we compute the OT matrix using exact LP OT [ot.emd](http://pot.readthedocs.io/en/stable/all.html#ot.emd) or regularized OT with  [ot.sinkhorn](http://pot.readthedocs.io/en/stable/all.html#ot.sinkhorn).
 
 # We can see that most of the trasportation is done in the block-diagonal which means that in average samples from one class are affected to the proper classs in the target.
 # 
-# #### 2/3 Mapping + Classification
+#%% #### 2/3 Mapping + Classification
 # 
 # Now we perform the barycentric mapping of the samples and traing the classifier on the mapped samples. We recomend to use a smaller ```gamma=1e1``` here because some samples will be mislabeled and a smooth classifier will work better.
 
 # We can see that the adaptation with EMD leads to a performance gain of nearly 10%. You can get even better performances using entropic regularized OT or group lasso regularization.
 # 
-# #### TNSE vizualization for OTDA
+#%% #### TNSE vizualization for OTDA
 # 
 # In order to see the effect of the adaptation we can perform a new TSNE embedding to see if the classes are betetr aligned.
 # 
@@ -195,12 +195,12 @@ pl.title('TSNE Embedding of the Source/Target data');
 # We can see that when using emd solver the OT matrix is a permutation wo the samples are exactly superimposed. In average the classes are also well transported but there exist a number of badly transported samples that have a class permutation.
 # 
 # 
-# #### Transported sampels vizualization
+#%% #### Transported sampels vizualization
 # 
 # We can now also plot the transported samples.
 
 # Those are the same MNIST samples that have been plotted above but after trasnportation. There are several samples that are transported on the wrong class but again in average the class information is preserved which explain the accuracy gain.
 # 
-# ### OTDA with regularization
+#%% ### OTDA with regularization
 # 
 # We now recomend to try regularized OT and to redo classification/TSNE/Vizu to see the impact of the regularization in term of performances, TNSE and transported samples. 
