@@ -7,7 +7,7 @@ This course has been prepared by [Rémi Flamary](http://remi.flamary.com/)  and 
 
 ### Course
 
-* Introduction to Optimal Transport [[PDF]]()
+* Introduction to Optimal Transport [[PDF]](https://remi.flamary.com/cours/otml/OTML_Statlearn_2018_OTintro.pdf)
     * Optimization problem
     * Regularization
 * OT for Machine Learning [[PDF]](https://remi.flamary.com/cours/otml/OTML_Statlearn_2018.pdf)
